@@ -85,16 +85,6 @@ aside li{padding:3px 0}
 header{position:relative;overflow:hidden}
 header canvas{position:absolute;inset:0;width:100%;height:100%;opacity:0.55;pointer-events:none}
 header .wrap{position:relative;z-index:1}
-.hands{position:absolute;top:0;bottom:0;right:0;width:44%;background:url(farm.jpg) 70% 62%/cover no-repeat;opacity:0.62;-webkit-mask-image:linear-gradient(to right,transparent 0%,#000 45%,#000 85%,transparent 100%);mask-image:linear-gradient(to right,transparent 0%,#000 45%,#000 85%,transparent 100%)}
-.spark{position:absolute;top:0;bottom:0;right:0;width:44%;pointer-events:none}
-.spark::before,.spark::after{content:"";position:absolute;left:66%;top:45%;border-radius:50%;transform:translate(-50%,-50%)}
-.spark::before{content:"AI";width:46px;height:46px;display:flex;align-items:center;justify-content:center;color:#ffffff;font-weight:700;font-size:15px;letter-spacing:0.08em;text-indent:0.08em;text-shadow:0 0 6px rgba(255,255,255,0.9),0 0 16px rgba(130,195,255,0.95);background:radial-gradient(circle,rgba(170,215,255,0.55) 0%,rgba(90,165,245,0.30) 45%,rgba(90,165,245,0) 72%);border:1px solid rgba(210,235,255,0.55);box-shadow:0 0 26px 8px rgba(110,180,255,0.40),0 0 80px 34px rgba(80,160,255,0.22),inset 0 0 12px rgba(255,255,255,0.25)}
-.spark::after{width:26px;height:26px;border:1px solid rgba(190,225,255,0.8);animation:ring 2.6s ease-out infinite}
-@keyframes ring{from{width:46px;height:46px;opacity:0.7}to{width:150px;height:150px;opacity:0}}
-@media (prefers-reduced-motion:reduce){.spark::after{animation:none;opacity:0}}
-@media (max-width:900px){.hands,.spark{display:none}}
-@media print{.spark{display:none}}
-@media print{.hands{display:none}}
 @media (max-width:640px){.wrap{padding:0 18px}nav .wrap{flex-wrap:nowrap;overflow-x:auto;gap:16px;scrollbar-width:none}nav .wrap::-webkit-scrollbar{display:none}nav a{white-space:nowrap}nav .name{margin-right:6px}header .wrap{padding-top:30px;padding-bottom:32px;gap:16px}header img{width:104px;height:104px}header h1{font-size:1.75em}.btn{padding:9px 14px}.grid,.grid.two{grid-template-columns:1fr}h2{margin-top:30px}ol.pubs{padding-left:18px}#top-link{right:14px;bottom:14px}}
 header img{box-shadow:0 0 0 6px rgba(255,255,255,0.14),0 14px 34px rgba(0,0,0,0.35)}
 nav{transition:box-shadow .2s}
@@ -118,6 +108,16 @@ aside a:hover{text-decoration:underline}
 #top-link:hover{transform:translateY(-3px);color:#fff}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.js .reveal{opacity:1;transform:none;transition:none}.card,.btn,.skills div,#top-link{transition:none}.card:hover,.btn:hover,.skills div:hover{transform:none}}
 @media print{header canvas,#top-link{display:none}.js .reveal{opacity:1;transform:none}}
+
+.farm{position:absolute;right:5%;top:50%;width:320px;height:210px;transform:translateY(-50%);pointer-events:none}
+.farm svg{position:absolute;inset:0;width:100%;height:100%;fill:none;stroke:rgba(200,228,255,0.35);stroke-width:1;stroke-dasharray:3 4}
+.animal{position:absolute;width:74px;height:74px;margin:-37px 0 0 -37px;border-radius:50%;background-size:cover;background-position:center;border:1px solid rgba(210,235,255,0.6);box-shadow:0 0 0 4px rgba(255,255,255,0.07),0 8px 22px rgba(0,0,0,0.28);opacity:0.92}
+.ai{position:absolute;left:160px;top:108px;width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#ffffff;font-weight:700;font-size:14px;letter-spacing:0.08em;text-indent:0.08em;text-shadow:0 0 6px rgba(255,255,255,0.9),0 0 16px rgba(130,195,255,0.95);background:radial-gradient(circle,rgba(170,215,255,0.6) 0%,rgba(90,165,245,0.35) 50%,rgba(90,165,245,0.12) 100%);border:1px solid rgba(210,235,255,0.6);box-shadow:0 0 24px 8px rgba(110,180,255,0.4),0 0 70px 28px rgba(80,160,255,0.2)}
+.ai::after{content:"";position:absolute;left:50%;top:50%;width:44px;height:44px;border-radius:50%;border:1px solid rgba(190,225,255,0.7);transform:translate(-50%,-50%);animation:ring 2.8s ease-out infinite}
+@keyframes ring{from{width:44px;height:44px;opacity:0.7}to{width:130px;height:130px;opacity:0}}
+@media (prefers-reduced-motion:reduce){.ai::after{animation:none;opacity:0}}
+@media (max-width:1000px){.farm{display:none}}
+@media print{.farm{display:none}}
 </style>
 <script type="application/ld+json">
 {
@@ -149,7 +149,13 @@ aside a:hover{text-decoration:underline}
   <a href="#contact">Contact</a>
 </div></nav>
 
-<header id="top"><div class="hands" aria-hidden="true"></div><div class="spark" aria-hidden="true"></div><canvas id="net" aria-hidden="true"></canvas><div class="wrap">
+<header id="top"><div class="farm" aria-hidden="true">
+  <svg viewBox="0 0 320 210"><path d="M62 52 L160 108 L258 52 M160 108 L160 172 M62 52 L258 52 M62 52 L160 172 L258 52"/></svg>
+  <span class="animal" style="left:62px;top:52px;background-image:url(cow.jpg)"></span>
+  <span class="animal" style="left:258px;top:52px;background-image:url(pig.jpg)"></span>
+  <span class="animal" style="left:160px;top:172px;background-image:url(hen.jpg)"></span>
+  <span class="ai">AI</span>
+</div><canvas id="net" aria-hidden="true"></canvas><div class="wrap">
   <img src="saba-noor.jpg" alt="Saba Noor">
   <div>
     <h1>Saba Noor</h1>
