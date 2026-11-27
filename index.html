@@ -83,7 +83,7 @@ aside li{padding:3px 0}
 @media print{aside{position:static}}
 
 header{position:relative;overflow:hidden}
-header canvas{position:absolute;inset:0;width:100%;height:100%;opacity:0.7;pointer-events:none}
+header canvas{position:absolute;inset:0;width:100%;height:100%;opacity:0.55;pointer-events:none}
 header .wrap{position:relative;z-index:1}
 header img{box-shadow:0 0 0 6px rgba(255,255,255,0.14),0 14px 34px rgba(0,0,0,0.35)}
 nav{transition:box-shadow .2s}
@@ -406,8 +406,6 @@ Publications: <a href="https://biblio.ugent.be/person/c6546091-6692-11ed-b2b4-e3
   var canvas = document.getElementById("net");
   var ctx = canvas.getContext("2d");
   var nodes = [], w = 0, h = 0, ratio = Math.min(window.devicePixelRatio || 1, 2);
-  var words = ["AI", "Ontology", "Knowledge graph", "Federated learning", "SPARQL", "LLM"];
-  var layers = [], edges = [], pulses = [];
   function size() {
     w = canvas.clientWidth; h = canvas.clientHeight;
     canvas.width = w * ratio; canvas.height = h * ratio;
@@ -418,62 +416,13 @@ Publications: <a href="https://biblio.ugent.be/person/c6546091-6692-11ed-b2b4-e3
       nodes.push({ x: Math.random() * w, y: Math.random() * h, dx: (Math.random() - 0.5) * 0.25,
                    dy: (Math.random() - 0.5) * 0.25, r: 1.2 + Math.random() * 1.8 });
     }
-    // some nodes carry a term, placed in the right part so they stay clear of the text
-    var labelled = w > 700 ? words.length : 4;
-    for (var k = 0; k < labelled && k < nodes.length; k++) {
-      nodes[k].word = words[k];
-      nodes[k].r = 3;
-      nodes[k].lo = w > 700 ? w * 0.64 : 10;
-      nodes[k].hi = w > 900 ? w * 0.78 - 110 : w - 130;
-      nodes[k].x = nodes[k].lo + Math.random() * Math.max(10, nodes[k].hi - nodes[k].lo);
-      nodes[k].y = 30 + (h - 60) * (k + 0.5) / labelled;
-      nodes[k].dx *= 0.5; nodes[k].dy *= 0.3;
-    }
-    // a small neural network drawn on the right side
-    layers = []; edges = []; pulses = [];
-    if (w > 900) {
-      var sizes = [3, 4, 4, 2], left = w * 0.80, span = w * 0.15, mid = h / 2;
-      sizes.forEach(function (n, li) {
-        var layer = [];
-        for (var q = 0; q < n; q++) {
-          layer.push({ x: left + span * li / (sizes.length - 1), y: mid + (q - (n - 1) / 2) * Math.min(38, (h - 60) / 5) });
-        }
-        layers.push(layer);
-      });
-      for (var li = 0; li < layers.length - 1; li++) {
-        layers[li].forEach(function (from) { layers[li + 1].forEach(function (to) { edges.push([from, to]); }); });
-      }
-      for (var s = 0; s < 9; s++) { pulses.push({ e: Math.floor(Math.random() * edges.length), t: Math.random() }); }
-    }
-  }
-  function network() {
-    if (!edges.length) { return; }
-    ctx.lineWidth = 1;
-    ctx.strokeStyle = "rgba(255,255,255,0.10)";
-    edges.forEach(function (e) { ctx.beginPath(); ctx.moveTo(e[0].x, e[0].y); ctx.lineTo(e[1].x, e[1].y); ctx.stroke(); });
-    layers.forEach(function (layer) {
-      layer.forEach(function (n) {
-        ctx.fillStyle = "rgba(255,255,255,0.10)";
-        ctx.strokeStyle = "rgba(255,255,255,0.45)";
-        ctx.beginPath(); ctx.arc(n.x, n.y, 6, 0, 6.2832); ctx.fill(); ctx.stroke();
-      });
-    });
-    pulses.forEach(function (pl) {
-      var e = edges[pl.e];
-      ctx.fillStyle = "rgba(190,225,255,0.9)";
-      ctx.beginPath(); ctx.arc(e[0].x + (e[1].x - e[0].x) * pl.t, e[0].y + (e[1].y - e[0].y) * pl.t, 2.2, 0, 6.2832); ctx.fill();
-      pl.t += 0.008;
-      if (pl.t > 1) { pl.t = 0; pl.e = Math.floor(Math.random() * edges.length); }
-    });
   }
   function draw() {
     ctx.clearRect(0, 0, w, h);
-    network();
-    ctx.font = "600 12px 'Segoe UI', system-ui, sans-serif";
     for (var i = 0; i < nodes.length; i++) {
       var a = nodes[i];
       a.x += a.dx; a.y += a.dy;
-      if (a.x < (a.lo || 0) || a.x > (a.hi || w)) { a.dx = -a.dx; }
+      if (a.x < 0 || a.x > w) { a.dx = -a.dx; }
       if (a.y < 0 || a.y > h) { a.dy = -a.dy; }
       for (var j = i + 1; j < nodes.length; j++) {
         var b = nodes[j], d = Math.hypot(a.x - b.x, a.y - b.y);
@@ -485,7 +434,6 @@ Publications: <a href="https://biblio.ugent.be/person/c6546091-6692-11ed-b2b4-e3
       }
       ctx.fillStyle = "rgba(255,255,255,0.55)";
       ctx.beginPath(); ctx.arc(a.x, a.y, a.r, 0, 6.2832); ctx.fill();
-      if (a.word) { ctx.fillStyle = "rgba(255,255,255,0.42)"; ctx.fillText(a.word, a.x + 8, a.y + 4); }
     }
     if (!still) { window.requestAnimationFrame(draw); }
   }
