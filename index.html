@@ -86,7 +86,14 @@ header{position:relative;overflow:hidden}
 header canvas{position:absolute;inset:0;width:100%;height:100%;opacity:0.55;pointer-events:none}
 header .wrap{position:relative;z-index:1}
 .hands{position:absolute;top:12%;bottom:12%;right:4%;width:30%;background:url(hands.jpg) center 46%/cover no-repeat;opacity:0.7;-webkit-mask-image:radial-gradient(ellipse 50% 50% at center,#000 45%,transparent 100%);mask-image:radial-gradient(ellipse 50% 50% at center,#000 45%,transparent 100%)}
-@media (max-width:900px){.hands{display:none}}
+.spark{position:absolute;top:12%;bottom:12%;right:4%;width:30%;pointer-events:none}
+.spark::before,.spark::after{content:"";position:absolute;left:57%;top:42%;border-radius:50%;transform:translate(-50%,-50%)}
+.spark::before{width:14px;height:14px;background:#ffffff;box-shadow:0 0 12px 4px rgba(255,255,255,0.9),0 0 38px 16px rgba(120,190,255,0.75),0 0 90px 40px rgba(80,160,255,0.35)}
+.spark::after{width:26px;height:26px;border:1px solid rgba(190,225,255,0.8);animation:ring 2.6s ease-out infinite}
+@keyframes ring{from{width:14px;height:14px;opacity:0.9}to{width:150px;height:150px;opacity:0}}
+@media (prefers-reduced-motion:reduce){.spark::after{animation:none;opacity:0}}
+@media (max-width:900px){.hands,.spark{display:none}}
+@media print{.spark{display:none}}
 @media print{.hands{display:none}}
 @media (max-width:640px){.wrap{padding:0 18px}nav .wrap{flex-wrap:nowrap;overflow-x:auto;gap:16px;scrollbar-width:none}nav .wrap::-webkit-scrollbar{display:none}nav a{white-space:nowrap}nav .name{margin-right:6px}header .wrap{padding-top:30px;padding-bottom:32px;gap:16px}header img{width:104px;height:104px}header h1{font-size:1.75em}.btn{padding:9px 14px}.grid,.grid.two{grid-template-columns:1fr}h2{margin-top:30px}ol.pubs{padding-left:18px}#top-link{right:14px;bottom:14px}}
 header img{box-shadow:0 0 0 6px rgba(255,255,255,0.14),0 14px 34px rgba(0,0,0,0.35)}
@@ -142,7 +149,7 @@ aside a:hover{text-decoration:underline}
   <a href="#contact">Contact</a>
 </div></nav>
 
-<header id="top"><div class="hands" aria-hidden="true"></div><canvas id="net" aria-hidden="true"></canvas><div class="wrap">
+<header id="top"><div class="hands" aria-hidden="true"></div><div class="spark" aria-hidden="true"></div><canvas id="net" aria-hidden="true"></canvas><div class="wrap">
   <img src="saba-noor.jpg" alt="Saba Noor">
   <div>
     <h1>Saba Noor</h1>
