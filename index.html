@@ -85,9 +85,9 @@ aside li{padding:3px 0}
 header{position:relative;overflow:hidden}
 header canvas{position:absolute;inset:0;width:100%;height:100%;opacity:0.55;pointer-events:none}
 header .wrap{position:relative;z-index:1}
-.hands{position:absolute;top:12%;bottom:12%;right:4%;width:30%;background:url(hands.jpg) center 46%/cover no-repeat;opacity:0.7;-webkit-mask-image:radial-gradient(ellipse 50% 50% at center,#000 45%,transparent 100%);mask-image:radial-gradient(ellipse 50% 50% at center,#000 45%,transparent 100%)}
-.spark{position:absolute;top:12%;bottom:12%;right:4%;width:30%;pointer-events:none}
-.spark::before,.spark::after{content:"";position:absolute;left:57%;top:42%;border-radius:50%;transform:translate(-50%,-50%)}
+.hands{position:absolute;top:0;bottom:0;right:0;width:44%;background:url(farm.jpg) 70% 62%/cover no-repeat;opacity:0.62;-webkit-mask-image:linear-gradient(to right,transparent 0%,#000 45%,#000 85%,transparent 100%);mask-image:linear-gradient(to right,transparent 0%,#000 45%,#000 85%,transparent 100%)}
+.spark{position:absolute;top:0;bottom:0;right:0;width:44%;pointer-events:none}
+.spark::before,.spark::after{content:"";position:absolute;left:66%;top:45%;border-radius:50%;transform:translate(-50%,-50%)}
 .spark::before{content:"AI";width:46px;height:46px;display:flex;align-items:center;justify-content:center;color:#ffffff;font-weight:700;font-size:15px;letter-spacing:0.08em;text-indent:0.08em;text-shadow:0 0 6px rgba(255,255,255,0.9),0 0 16px rgba(130,195,255,0.95);background:radial-gradient(circle,rgba(170,215,255,0.55) 0%,rgba(90,165,245,0.30) 45%,rgba(90,165,245,0) 72%);border:1px solid rgba(210,235,255,0.55);box-shadow:0 0 26px 8px rgba(110,180,255,0.40),0 0 80px 34px rgba(80,160,255,0.22),inset 0 0 12px rgba(255,255,255,0.25)}
 .spark::after{width:26px;height:26px;border:1px solid rgba(190,225,255,0.8);animation:ring 2.6s ease-out infinite}
 @keyframes ring{from{width:46px;height:46px;opacity:0.7}to{width:150px;height:150px;opacity:0}}
