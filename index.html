@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Saba Noor</title>
+<meta property="og:title" content="Saba Noor">
+<meta property="og:type" content="profile">
+<meta property="og:image" content="saba-noor.jpg">
+<meta name="author" content="Saba Noor">
+<meta name="description" content="Saba Noor, PhD researcher at Ghent University: ontologies, data integration, federated learning and LLM applications for animal health data.">
+<style>
+:root{--navy:#0f2f52;--blue:#1b4f86;--mid:#2a6cab;--pale:#eef4fa;--line:#d5e2ef;--ink:#1c2530;--soft:#566575;--bg:#f4f7fa}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:60px}
+body{margin:0;font-family:"Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;font-size:16px}
+a{color:var(--blue);text-underline-offset:2px}
+a:hover{color:var(--navy)}
+.wrap{max-width:1020px;margin:0 auto;padding:0 26px}
+nav{position:sticky;top:0;z-index:5;background:rgba(255,255,255,0.97);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;gap:22px;flex-wrap:wrap;align-items:center;padding-top:12px;padding-bottom:12px}
+nav .name{font-weight:700;color:var(--navy);margin-right:auto;text-decoration:none;letter-spacing:0.01em}
+nav a{color:var(--soft);text-decoration:none;font-size:0.93em;font-weight:600}
+nav a:hover{color:var(--navy)}
+header{background:linear-gradient(120deg,var(--navy) 0%,var(--blue) 60%,var(--mid) 100%);color:#ffffff}
+header .wrap{display:flex;gap:34px;align-items:center;flex-wrap:wrap;padding-top:52px;padding-bottom:52px}
+header img{width:156px;height:156px;border-radius:50%;object-fit:cover;border:4px solid #ffffff;box-shadow:0 6px 18px rgba(0,0,0,0.25)}
+header h1{margin:0 0 4px 0;font-size:2.5em;font-weight:700;letter-spacing:-0.01em}
+header p{margin:0 0 6px 0;color:#dbe8f5;max-width:620px}
+.role{font-size:1.12em;color:#ffffff !important;font-weight:600}
+.buttons{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:8px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.6);color:#ffffff;text-decoration:none;font-weight:600;font-size:0.92em}
+.btn:hover{background:rgba(255,255,255,0.16);color:#ffffff}
+.btn.main{background:#ffffff;color:var(--navy);border-color:#ffffff}
+.btn.main:hover{background:var(--pale);color:var(--navy)}
+main{background:#ffffff;box-shadow:0 0 20px rgba(15,47,82,0.07);padding-bottom:10px}
+section{padding:10px 0 4px 0}
+h2{color:var(--navy);margin:38px 0 16px 0;font-size:1.35em;font-weight:700;padding-bottom:8px;border-bottom:1px solid var(--line);position:relative}
+h2::after{content:"";position:absolute;left:0;bottom:-1px;width:56px;height:3px;background:var(--mid)}
+h3{color:var(--navy);margin:0 0 4px 0;font-size:1.04em;font-weight:600}
+#publications h3{margin:22px 0 8px 0;font-size:0.82em;text-transform:uppercase;letter-spacing:0.08em;color:var(--soft)}
+#about p{max-width:820px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(380px,1fr))}
+.card{border:1px solid var(--line);border-radius:8px;padding:18px 20px;background:#ffffff;display:flex;flex-direction:column;transition:box-shadow .15s,border-color .15s}
+.card:hover{box-shadow:0 4px 14px rgba(15,47,82,0.10);border-color:#b9cfe5}
+.grid.two .card{border-top:3px solid var(--mid)}
+.card p{margin:6px 0 12px 0;font-size:0.95em;color:#2c3845}
+.card .links{margin-top:auto}
+.card .links a{display:inline-block;margin-right:14px;font-weight:600;font-size:0.9em}
+.tag{align-self:flex-start;color:var(--mid);font-size:0.74em;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px}
+.item{display:flex;gap:22px;padding:12px 0;border-bottom:1px solid #e6edf5}
+.item:last-child{border-bottom:none}
+.when{flex:0 0 150px;color:var(--soft);font-size:0.9em;padding-top:3px;font-variant-numeric:tabular-nums}
+.what{flex:1}
+.what p{margin:3px 0 0 0;font-size:0.95em;color:#2c3845}
+.what ul{margin:6px 0 0 0;padding-left:20px;font-size:0.95em;color:#2c3845}
+ol.pubs{padding-left:22px;margin:0}
+ol.pubs li{margin-bottom:10px;font-size:0.94em;color:#2c3845}
+ol.pubs li b{color:var(--ink)}
+ol.pubs a{word-break:break-word}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.skills div{background:var(--pale);border-radius:8px;padding:14px 16px;font-size:0.93em;color:#2c3845}
+.skills b{color:var(--navy);display:block;margin-bottom:4px}
+footer{padding:30px 0 36px 0;color:var(--soft);font-size:0.86em;border-top:1px solid var(--line);margin-top:30px}
+@media (max-width:640px){.item{flex-direction:column;gap:2px}.when{flex:none}header h1{font-size:1.9em}.grid.two{grid-template-columns:1fr}nav .wrap{gap:14px}}
+@media print{nav,.buttons{display:none}header{background:none;color:#000}header p,.role{color:#000 !important}main{box-shadow:none}.card{break-inside:avoid}body{background:#fff;font-size:11pt}}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <a class="name" href="#top">Saba Noor</a>
+  <a href="#research">Research</a>
+  <a href="#projects">Projects</a>
+  <a href="#publications">Publications</a>
+  <a href="#experience">Experience</a>
+  <a href="#contact">Contact</a>
+</div></nav>
+
+<header id="top"><div class="wrap">
+  <img src="saba-noor.jpg" alt="Saba Noor">
+  <div>
+    <h1>Saba Noor</h1>
+    <p class="role">PhD researcher, Ghent University</p>
+    <p>I work on ontologies, data integration and federated learning, so that animal health data from different
+    laboratories and countries can be used together.</p>
+    <div class="buttons">
+      <a class="btn main" href="https://decide-project-eu.github.io/LivestockHealthOntology/">Livestock Health Ontology</a>
+      <a class="btn" href="https://github.com/sabanoor8867">GitHub</a>
+      <a class="btn" href="https://www.linkedin.com/in/saba-noor-70482b291">LinkedIn</a>
+      <a class="btn" href="https://orcid.org/0000-0003-0232-508X">ORCID</a>
+      <a class="btn" href="https://biblio.ugent.be/person/c6546091-6692-11ed-b2b4-e3e13ce605c1">UGent Biblio</a>
+    </div>
+  </div>
+</div></header>
+
+<main><div class="wrap">
+
+<section id="about">
+<h2>About</h2>
+<p>I am a PhD researcher at Ghent University, in the Department of Animal Sciences and Aquatic Ecology and the
+Bovi-Analytics lab. In 2027 I will do a research internship at the Bovi-Analytics Lab of Cornell University, with a
+grant of the Research Foundation Flanders (FWO). My promoters are Miel Hostens (Cornell University) and Jeroen
+Degroote (Ghent University). My thesis is titled "Ontology-driven animal health: a prerequisite towards federated
+learning".</p>
+<p>From 2023 to 2026 I was co-lead of the data work package of the EU Horizon 2020 project DECIDE, where diagnostic
+data on cattle, pigs, poultry and salmon came from laboratories in several countries. I designed the Livestock Health
+Ontology to give these data a shared structure and meaning, compared ways of giving access to them, and built a
+federated learning system in which the data stay with each laboratory. Before my PhD I taught computer science at
+two universities in Pakistan.</p>
+</section>
+
+<section id="research">
+<h2>Research</h2>
+<div class="grid two">
+  <div class="card">
+    <span class="tag">Ontology</span>
+    <h3>Livestock Health Ontology (LHO)</h3>
+    <p>An ontology for animal health surveillance data of cattle, pigs, poultry and salmon. Laboratories map their own
+    columns and codes to it once, and the same query then works on the data of every laboratory. Published on
+    AgroPortal, BioPortal and GitHub.</p>
+    <div class="links"><a href="https://decide-project-eu.github.io/LivestockHealthOntology/">Documentation and queries</a>
+    <a href="https://agroportal.eu/ontologies/LHO">AgroPortal</a>
+    <a href="https://doi.org/10.5281/zenodo.15356227">Conference paper (2024)</a>
+    <a href="https://doi.org/10.1016/j.atech.2026.101977">Systematic review (2026)</a></div>
+  </div>
+  <div class="card">
+    <span class="tag">Data access</span>
+    <h3>Direct, centralized or federated access</h3>
+    <p>A comparison of three ways of giving access to the same animal health data, including decentralized access
+    over Solid Pods, with query performance, a FAIR assessment and practical guidelines for choosing between them.</p>
+    <div class="links"><a href="https://doi.org/10.3389/fvets.2026.1962800">Paper</a>
+    <a href="https://github.com/decide-project-eu/data-access-guidelines-best-practices-wp1-decide">Code</a></div>
+  </div>
+  <div class="card">
+    <span class="tag">Federated learning</span>
+    <h3>SolidFL</h3>
+    <p>Federated learning over Solid Pods. A model is trained next to each laboratory's Pod and only model updates are
+    shared. The ontology gives all laboratories the same features. Evaluated on bovine respiratory disease data from
+    six laboratories in four countries. Manuscript in preparation.</p>
+    <div class="links"><a href="https://www.linkedin.com/posts/bovi-analytics_federatedlearning-solidpods-animalscience-activity-7470868973442637824-Wbhy">Demo video</a> <a href="https://github.com/Bovi-analytics/ontology_driven_horizontal_federated_learning_BRD">Code (public soon)</a></div>
+  </div>
+  <div class="card">
+    <span class="tag">LLM application</span>
+    <h3>LHO knowledge-graph assistant</h3>
+    <p>An assistant that answers questions about livestock health data through an MCP server on a knowledge graph,
+    with an open-source model that runs locally. It answered 39 of 40 test questions correctly, and every number in an
+    answer is checked against the data. The demo uses synthetic data.</p>
+    <div class="links"><a href="https://github.com/sabanoor8867/lho-mcp-demo">Code and results</a></div>
+  </div>
+</div>
+</section>
+
+<section id="projects">
+<h2>Projects and software</h2>
+<div class="grid">
+  <div class="card">
+    <h3>SHACL validation of LHO data</h3>
+    <p>SHACL shapes for cattle, pig, poultry and salmon data, with example data and validation reports.</p>
+    <div class="links"><a href="https://github.com/sabanoor8867/SHACL-Validation">GitHub</a></div>
+  </div>
+  <div class="card">
+    <h3>RML mapping to the LHO</h3>
+    <p>Mapping of laboratory data in CSV files to the ontology with RML, with the result checked by SHACL.</p>
+    <div class="links"><a href="https://github.com/sabanoor8867/-RML-Mapping-Health-Ontologies">GitHub</a></div>
+  </div>
+  <div class="card">
+    <h3>Veterinary Epidemiology Metadata Ontology (VEMO)</h3>
+    <p>A metadata ontology for veterinary epidemiological datasets.</p>
+    <div class="links"><a href="https://github.com/Bovi-analytics/Veterinary-Epidemiology-Metadata-Ontology">GitHub</a>
+    <a href="https://bioportal.bioontology.org/ontologies/VEMO">BioPortal</a></div>
+  </div>
+  <div class="card">
+    <h3>DECIDE deliverables</h3>
+    <p>D1.2, Species-specific ontologies, and D1.3, Testing and evaluation of alternative approaches for data access.
+    Public reports of the EU Horizon 2020 project DECIDE.</p>
+    <div class="links"><a href="https://decideproject.eu/wp-content/uploads/sites/41/2026/06/DECIDE_D1.2_Species-specificOntologies_v03.pdf">D1.2</a>
+    <a href="https://decideproject.eu/wp-content/uploads/sites/41/2026/06/DECIDE_D1.3_AlternativeApproachesDataAccess.pdf">D1.3</a></div>
+  </div>
+  <div class="card">
+    <h3>Ontology tutorial</h3>
+    <p>A public tutorial on implementing ontologies in data pipelines, from the workshop at the European Conference on
+    Precision Livestock Farming 2024.</p>
+    <div class="links"><a href="https://decide-project-eu.github.io/case-studies-website/tutorials/ontologies.html">Tutorial</a></div>
+  </div>
+  <div class="card">
+    <h3>Salmon mortality dashboard</h3>
+    <p>A reusable Tableau dashboard of the mortality of farmed Atlantic salmon by month, year and region. The
+    repository holds the design only, without data.</p>
+    <div class="links"><a href="https://github.com/sabanoor8867/Aquaculture-Salmon-Mortality-Dashboard">GitHub</a></div>
+  </div>
+</div>
+</section>
+
+<section id="publications">
+<h2>Publications</h2>
+<h3>Journal articles</h3>
+<ol class="pubs">
+  <li><b>Noor, S.</b>, Taelman, R., Degroote, J., Pardon, B., van Schaik, G., Rafiq, M., Delavenne, C., Liu, E., Zhang, H., Niu, P., Hostens, M. (2026). From data silos to actionable insights: a comparative evaluation of data access models and practical guidelines for animal health surveillance. <i>Frontiers in Veterinary Science</i> 13, 1962800. <a href="https://doi.org/10.3389/fvets.2026.1962800">https://doi.org/10.3389/fvets.2026.1962800</a></li>
+  <li><b>Noor, S.</b>, Degroote, J., van Schaik, G., Pardon, B., Faverjon, C., Delavenne, C., Hostens, M. (2026). A systematic review on the role of livestock ontologies in animal health management and disease surveillance. <i>Smart Agricultural Technology</i> 14, 101977. <a href="https://doi.org/10.1016/j.atech.2026.101977">https://doi.org/10.1016/j.atech.2026.101977</a></li>
+  <li>Faverjon, C., Delavenne, C., Bareille, S., [&hellip;], <b>Noor, S.</b>, [&hellip;], van Schaik, G. (2026). Enhancing reusability of veterinary epidemiological data by creating contextual metadata. <i>Scientific Data</i>. <a href="https://doi.org/10.1038/s41597-026-08217-9">https://doi.org/10.1038/s41597-026-08217-9</a></li>
+  <li>Bokma, J., Doidge, C., Jourquin, S., Hostens, M., <b>Noor, S.</b>, Santman-Berends, I., Ribbens, S., Evrard, J., Theuns, S., S&aacute;nchez-Miguel, C., van Schaik, G., Kaler, J., Pardon, B. (2026). The DECIDE Cattle Barometer: a cross-country monitoring and decision support tool for respiratory pathogens. <i>Irish Veterinary Journal</i> 79, 42. <a href="https://doi.org/10.1186/s13620-026-00356-0">https://doi.org/10.1186/s13620-026-00356-0</a></li>
+  <li>Hostens, M., Franceschini, S., van Leerdam, M., Yang, H., Pokharel, S., Liu, E., Niu, P., Zhang, H., <b>Noor, S.</b>, Hermans, K., Salamone, M., Sharma, S. (2025). The future of big data and artificial intelligence on dairy farms: a proposed dairy data ecosystem. <i>JDS Communications</i> 6, S9&ndash;S14. <a href="https://doi.org/10.3168/jdsc.2025-0843">https://doi.org/10.3168/jdsc.2025-0843</a></li>
+</ol>
+<h3>Book chapter</h3>
+<ol class="pubs">
+  <li><b>Noor, S.</b>, Bokma, J., Pardon, B., van Schaik, G., Hostens, M. (2024). Agri Semantics: developments to improve data interoperability to support farm information management and decision support systems in agriculture. In: <i>Smart Farms</i>, Burleigh Dodds Science Publishing, 75&ndash;96. <a href="https://doi.org/10.19103/AS.2023.0132.05">https://doi.org/10.19103/AS.2023.0132.05</a></li>
+</ol>
+<h3>Conference papers and abstracts</h3>
+<ol class="pubs">
+  <li><b>Noor, S.</b>, Degroote, J., Pardon, B., van Schaik, G., Hostens, M. (2026). Federated learning for bovine respiratory disease prediction across European veterinary laboratories. <i>Book of Abstracts of the 2nd Artificial Intelligence for Animal Science Conference</i>, 43, 24.</li>
+  <li><b>Noor, S.</b>, Degroote, J., van Schaik, G., Pardon, B., Bokma, J., Slegers, Y., Garcia-Morante, B., Hostens, M. (2024). Advancing precision livestock farming through ontology-driven interoperable health data management: extending the Livestock Health Ontology (LHO) for enhanced disease surveillance. <i>11th European Conference on Precision Livestock Farming</i>, 571&ndash;580. <a href="https://doi.org/10.5281/zenodo.15356227">https://doi.org/10.5281/zenodo.15356227</a></li>
+  <li>Garcia-Morante, B., <b>Noor, S.</b>, Hostens, M., Ainoza, A., Barrera, X., Cam&oacute;n, S., Chac&oacute;n, G., Del Caso, S., Fern&aacute;ndez, V., Maldonado, J., Mart&iacute;nez-Guin&oacute;, L., Penalba, C., Valls, L., Sibila, M., Vilalta, C., Segal&eacute;s, J. (2025). Introducing the pig barometer: a comprehensive pilot tool for mapping diagnostic test results and geolocation of swine endemic pathogens in Spain. <i>16th European Symposium of Porcine Health Management</i>, 156. <a href="https://doi.org/10.5281/zenodo.17725945">https://doi.org/10.5281/zenodo.17725945</a></li>
+  <li>Degroote, J., <b>Noor, S.</b>, Heirbaut, S., Van De Putte, T., Hostens, M. (2024). Ontologies as a key to data challenges in Digital Twinning. <i>1st Animal Digital Twins Day</i>.</li>
+</ol>
+<p>The full list is in the <a href="https://biblio.ugent.be/person/c6546091-6692-11ed-b2b4-e3e13ce605c1">Ghent University Academic Bibliography</a>.</p>
+</section>
+
+<section id="experience">
+<h2>Experience</h2>
+<div class="item"><div class="when">Feb. 2023 &ndash; present</div><div class="what">
+  <h3>Doctoral researcher, Ghent University</h3>
+  <p>Department of Animal Sciences and Aquatic Ecology (LANUPRO) and Bovi-Analytics lab, Ghent, Belgium.</p>
+  <ul>
+    <li>Designed and maintain the Livestock Health Ontology.</li>
+    <li>Wrote Python and R pipelines that convert laboratory data from six laboratories in four countries to RDF.</li>
+    <li>Set up decentralized data access with Solid Pods and federated SPARQL querying.</li>
+    <li>Built SolidFL, a federated learning system in PyTorch.</li>
+  </ul></div></div>
+<div class="item"><div class="when">Feb. 2023 &ndash; Jun. 2026</div><div class="what">
+  <h3>Co-lead of Work Package 1, DECIDE (EU Horizon 2020)</h3>
+  <p>Data acquisition and characterisation in a multi-country consortium. Translated project goals into data
+  requirements and technical choices, was the contact point between laboratories, data holders and the consortium,
+  and co-authored the deliverables D1.2 and D1.3.</p></div></div>
+<div class="item"><div class="when">Mar. 2019 &ndash; 2022</div><div class="what">
+  <h3>Lecturer in Computer Science, Lahore Garrison University</h3>
+  <p>Lahore, Pakistan. Taught Semantic Web, Theory of Automata and Artificial Intelligence.</p></div></div>
+<div class="item"><div class="when">Nov. 2017 &ndash; 2019</div><div class="what">
+  <h3>Lecturer in Computer Science, National College of Business Administration and Economics</h3>
+  <p>Rahim Yar Khan, Pakistan. Taught Web Engineering.</p></div></div>
+
+<h2>Education</h2>
+<div class="item"><div class="when">2027 (expected)</div><div class="what">
+  <h3>PhD, Ghent University, Belgium</h3>
+  <p>Ontology-driven animal health: a prerequisite towards federated learning.</p></div></div>
+<div class="item"><div class="when">2015</div><div class="what">
+  <h3>MS in Computer Science (research), COMSATS Institute of Information Technology, Islamabad</h3>
+  <p>Thesis: OWL ontology for genomic data security.</p></div></div>
+<div class="item"><div class="when">2012</div><div class="what">
+  <h3>BS in Computer Science, Islamia University of Bahawalpur</h3></div></div>
+
+<h2>Teaching, talks and grants</h2>
+<div class="item"><div class="when">2027</div><div class="what">
+  <h3>Research internship at Cornell University (planned)</h3>
+  <p>Bovi-Analytics Lab, Department of Animal Science, with Dr. Miel Hostens. Funded by a grant of the Research
+  Foundation Flanders (FWO) for a short stay abroad.</p></div></div>
+<div class="item"><div class="when">2026</div><div class="what">
+  <h3>2nd Artificial Intelligence for Animal Science Conference</h3>
+  <p>Federated learning for bovine respiratory disease prediction across European veterinary laboratories.</p></div></div>
+<div class="item"><div class="when">2023 &ndash; 2026</div><div class="what">
+  <h3>PhD research funded by the EU Horizon 2020 project DECIDE</h3>
+  <p>Doctoral researcher and data scientist in the project "Data-driven control and prioritisation of non-EU-regulated
+  contagious animal diseases" (grant agreement No. 101000494).</p></div></div>
+<div class="item"><div class="when">2024</div><div class="what">
+  <h3>Workshop lead, European Conference on Precision Livestock Farming, Bologna</h3>
+  <p>Hands-on sessions on RDF, ontology mapping and SPARQL in the workshop "Understanding Semantic Web and Ontologies
+  for Precision Livestock Farming".</p></div></div>
+</section>
+
+<section id="skills">
+<h2>Skills</h2>
+<div class="skills">
+  <div><b>Knowledge graphs</b>RDF, OWL, SKOS, SPARQL, SHACL, RML, Solid Pods, federated querying with Comunica</div>
+  <div><b>Machine learning</b>Python, PyTorch, federated learning, graph neural networks, R, pandas, PySpark</div>
+  <div><b>LLM applications</b>Tool calling, Model Context Protocol, local models with Ollama, evaluation of answers</div>
+  <div><b>Engineering</b>Docker, Azure Functions, Git and GitHub, FAIR data and GDPR-aware data handling</div>
+  <div><b>Languages</b>English, Urdu, Dutch (beginner)</div>
+</div>
+</section>
+
+<section id="contact">
+<h2>Contact</h2>
+<p>Email: <a href="mailto:saba.noor@ugent.be">saba.noor@ugent.be</a>, <a href="mailto:sabanoor8867@gmail.com">sabanoor8867@gmail.com</a><br>
+LinkedIn: <a href="https://www.linkedin.com/in/saba-noor-70482b291">linkedin.com/in/saba-noor-70482b291</a><br>
+GitHub: <a href="https://github.com/sabanoor8867">github.com/sabanoor8867</a><br>
+ORCID: <a href="https://orcid.org/0000-0003-0232-508X">0000-0003-0232-508X</a><br>
+Publications: <a href="https://biblio.ugent.be/person/c6546091-6692-11ed-b2b4-e3e13ce605c1">Ghent University Academic Bibliography</a></p>
+</section>
+
+<footer>Saba Noor, Ghent, Belgium. Last updated November 2026.</footer>
+</div></main>
+
+</body>
+</html>
