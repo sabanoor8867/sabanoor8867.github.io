@@ -67,6 +67,19 @@ ol.pubs a{word-break:break-word}
 footer{padding:30px 0 36px 0;color:var(--soft);font-size:0.86em;border-top:1px solid var(--line);margin-top:30px}
 @media (max-width:640px){.item{flex-direction:column;gap:2px}.when{flex:none}header h1{font-size:1.9em}.grid.two{grid-template-columns:1fr}nav .wrap{gap:14px}}
 @media print{nav,.buttons{display:none}header{background:none;color:#000}header p,.role{color:#000 !important}main{box-shadow:none}.card{break-inside:avoid}body{background:#fff;font-size:11pt}}
+
+.wrap{max-width:1240px}
+.layout{display:grid;grid-template-columns:240px minmax(0,1fr);gap:44px;align-items:start}
+aside{position:sticky;top:64px;margin-top:38px;padding:18px 20px;background:var(--pale);border-radius:8px;border-top:3px solid var(--mid);font-size:0.9em;color:#2c3845}
+aside h4{margin:0 0 8px 0;color:var(--navy);font-size:0.8em;text-transform:uppercase;letter-spacing:0.08em}
+aside h4:not(:first-child){margin-top:18px}
+aside p{margin:0 0 12px 0}
+aside span{display:block;font-weight:600;color:var(--navy)}
+aside a{word-break:break-word}
+aside ul{list-style:none;margin:0;padding:0}
+aside li{padding:3px 0}
+@media (max-width:900px){.layout{grid-template-columns:1fr;gap:0}aside{position:static;margin-top:24px}}
+@media print{aside{position:static}}
 </style>
 <script type="application/ld+json">
 {
@@ -115,7 +128,25 @@ footer{padding:30px 0 36px 0;color:var(--soft);font-size:0.86em;border-top:1px s
   </div>
 </div></header>
 
-<main><div class="wrap">
+<main><div class="wrap layout">
+
+<aside>
+  <h4>Contact information</h4>
+  <p>Department of Animal Sciences and Aquatic Ecology<br>Faculty of Bioscience Engineering<br>Ghent University<br>
+  Coupure Links 653<br>9000 Ghent, Belgium</p>
+  <p><span>Email</span><a href="mailto:saba.noor@ugent.be">saba.noor@ugent.be</a><br>
+  <a href="mailto:sabanoor8867@gmail.com">sabanoor8867@gmail.com</a></p>
+  <h4>Additional links</h4>
+  <ul>
+    <li><a href="https://decide-project-eu.github.io/LivestockHealthOntology/">Livestock Health Ontology</a></li>
+    <li><a href="https://github.com/sabanoor8867">GitHub</a></li>
+    <li><a href="https://www.linkedin.com/in/saba-noor-70482b291">LinkedIn</a></li>
+    <li><a href="https://orcid.org/0000-0003-0232-508X">ORCID</a></li>
+    <li><a href="https://biblio.ugent.be/person/c6546091-6692-11ed-b2b4-e3e13ce605c1">UGent Academic Bibliography</a></li>
+  </ul>
+</aside>
+
+<div class="content">
 
 <section id="about">
 <h2>About</h2>
@@ -308,6 +339,7 @@ Publications: <a href="https://biblio.ugent.be/person/c6546091-6692-11ed-b2b4-e3
 </section>
 
 <footer>Saba Noor, Ghent, Belgium. Last updated November 2026.</footer>
+</div>
 </div></main>
 
 </body>
