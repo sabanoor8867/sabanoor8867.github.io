@@ -113,12 +113,11 @@ aside a:hover{text-decoration:underline}
 
 
 
-.farm{position:absolute;right:4%;top:50%;width:240px;height:240px;transform:translateY(-50%);pointer-events:none;opacity:0.30;fill:none;stroke:#cfe6ff;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
-.farm .shape{opacity:0.75}
-.farm .dot{fill:#cfe6ff;stroke:none}
-.farm text{fill:#ffffff;stroke:none;font:700 19px "Segoe UI",system-ui,sans-serif;text-anchor:middle;letter-spacing:0.06em}
-.farm .link{stroke-dasharray:2 4;stroke-width:1.1}
-@media (max-width:1000px){.farm{display:none}}
+
+.farm{position:absolute;right:2%;top:50%;width:540px;height:230px;transform:translateY(-50%);pointer-events:none}
+.ph{position:absolute;width:200px;height:200px;background-size:cover;background-position:center;opacity:0.7;-webkit-mask-image:radial-gradient(circle,#000 30%,transparent 70%);mask-image:radial-gradient(circle,#000 30%,transparent 70%)}
+.ph.wide{width:270px;height:180px;-webkit-mask-image:radial-gradient(ellipse,#000 35%,transparent 70%);mask-image:radial-gradient(ellipse,#000 35%,transparent 70%)}
+@media (max-width:1200px){.farm{display:none}}
 @media print{.farm{display:none}}
 </style>
 <script type="application/ld+json">
@@ -151,20 +150,11 @@ aside a:hover{text-decoration:underline}
   <a href="#contact">Contact</a>
 </div></nav>
 
-<header id="top"><svg class="farm" aria-hidden="true" viewBox="-8 -8 256 256">
-  
-  <g transform="translate(120 124) scale(0.95) translate(-120 -118)">
-  <g class="shape"><image href="cow.png" x="34" y="42.2" width="92" height="79.8"/><image href="pig.png" x="44" y="149.3" width="46" height="36.7"/><image href="chick.png" x="98" y="164.7" width="15" height="21.3"/></g>
-  <path d="M68 52 a16 16 0 0 1 24 0 M61 45 a26 26 0 0 1 38 0 M54 38 a36 36 0 0 1 52 0"/>
-  <circle class="dot" cx="80" cy="58" r="2.2"/>
-  <rect x="150" y="52" width="48" height="82" rx="7"/>
-  <path d="M168 126 h12"/>
-  <text x="174" y="97">AI</text>
-  <path d="M112 186 q13 -9 26 0 t26 0 t26 0 t18 -3 M112 200 h96 M112 186 v14 M208 183 v17"/>
-  <path d="M138 181 V155 M138 173 q-9 -2 -10 -11 q9 0 10 11 M138 173 q9 -2 10 -11 q-9 0 -10 11 M138 161 q-5 -6 0 -13 q5 7 0 13 M164 181 V155 M164 173 q-9 -2 -10 -11 q9 0 10 11 M164 173 q9 -2 10 -11 q-9 0 -10 11 M164 161 q-5 -6 0 -13 q5 7 0 13 M190 181 V155 M190 173 q-9 -2 -10 -11 q9 0 10 11 M190 173 q9 -2 10 -11 q-9 0 -10 11 M190 161 q-5 -6 0 -13 q5 7 0 13"/>
-  <path class="link" d="M128 96 L148 92 M174 136 L168 152"/>
-</g>
-</svg><canvas id="net" aria-hidden="true"></canvas><div class="wrap">
+<header id="top"><div class="farm" aria-hidden="true">
+  <span class="ph wide" style="left:0;top:40px;background-image:url(cow.jpg)"></span>
+  <span class="ph" style="left:205px;top:0;background-image:url(pig.jpg)"></span>
+  <span class="ph" style="left:340px;top:30px;background-image:url(hen.jpg)"></span>
+</div><canvas id="net" aria-hidden="true"></canvas><div class="wrap">
   <img src="saba-noor.jpg" alt="Saba Noor">
   <div>
     <h1>Saba Noor</h1>
