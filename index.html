@@ -112,19 +112,16 @@ aside a:hover{text-decoration:underline}
 
 
 
-.farm{position:absolute;right:4%;top:0;bottom:0;width:min(30%,420px);pointer-events:none}
-.farm::before{content:"";position:absolute;inset:0;background:url(animals.png) center bottom/contain no-repeat;opacity:0.22}
-.farm svg{position:absolute;inset:0;width:100%;height:100%;fill:none;stroke:rgba(200,230,255,0.32);stroke-width:1;stroke-dasharray:2 5}
-.ai{opacity:0.8;position:absolute;left:50%;top:30%;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#ffffff;font-weight:700;font-size:15px;letter-spacing:0.08em;text-indent:0.08em;text-shadow:0 0 6px rgba(255,255,255,0.9),0 0 16px rgba(130,195,255,0.95);background:radial-gradient(circle,rgba(150,210,255,0.6) 0%,rgba(60,140,225,0.5) 60%,rgba(30,95,170,0.55) 100%);border:1px solid rgba(215,238,255,0.75);box-shadow:0 0 22px 6px rgba(110,185,255,0.42),inset 0 0 12px rgba(255,255,255,0.28)}
-.ai::after{content:"";position:absolute;left:50%;top:50%;width:46px;height:46px;border-radius:50%;border:1px solid rgba(190,225,255,0.65);transform:translate(-50%,-50%);animation:ring 3s ease-out infinite}
-@keyframes ring{from{width:46px;height:46px;opacity:0.7}to{width:120px;height:120px;opacity:0}}
-@media (prefers-reduced-motion:reduce){.ai::after{animation:none;opacity:0}}
-.fields{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:0.5;-webkit-mask-image:linear-gradient(to right,transparent 48%,#000 80%);mask-image:linear-gradient(to right,transparent 48%,#000 80%)}
-.fields path{fill:none;stroke:rgba(205,230,255,0.30);stroke-width:1;vector-effect:non-scaling-stroke}
-.fields .horizon{stroke:rgba(205,230,255,0.45)}
-.fields .faint{stroke:rgba(205,230,255,0.12)}
-@media (max-width:1000px){.farm{display:none}.fields{-webkit-mask-image:none;mask-image:none;opacity:0.3}}
-@media print{.fields{display:none}}
+
+.farm{position:absolute;right:5%;top:50%;width:210px;height:210px;transform:translateY(-50%);pointer-events:none;opacity:0.62;fill:none;stroke:#cfe6ff;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.farm .rim{stroke-dasharray:9 8;stroke-width:1.3;transform-origin:120px 120px;animation:turn 60s linear infinite}
+.farm .shape{opacity:0.75}
+.farm .dot{fill:#cfe6ff;stroke:none}
+.farm text{fill:#ffffff;stroke:none;font:700 19px "Segoe UI",system-ui,sans-serif;text-anchor:middle;letter-spacing:0.06em}
+.farm .link{stroke-dasharray:2 4;stroke-width:1.1}
+@keyframes turn{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.farm .rim{animation:none}}
+@media (max-width:1000px){.farm{display:none}}
 @media print{.farm{display:none}}
 </style>
 <script type="application/ld+json">
@@ -157,7 +154,18 @@ aside a:hover{text-decoration:underline}
   <a href="#contact">Contact</a>
 </div></nav>
 
-<header id="top"><svg class="fields" aria-hidden="true" viewBox="0 0 1000 300" preserveAspectRatio="none"><defs><linearGradient id="ground" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cfe6ff" stop-opacity="0.04"/><stop offset="1" stop-color="#cfe6ff" stop-opacity="0.20"/></linearGradient></defs><rect x="0" y="215" width="1000" height="85" fill="url(#ground)"/><path d="M0 215 L1000 215" class="horizon"/><path d="M584 215 L-700 300 M605 215 L-530 300 M625 215 L-360 300 M646 215 L-190 300 M666 215 L-20 300 M686 215 L150 300 M707 215 L320 300 M727 215 L490 300 M748 215 L660 300 M768 215 L830 300 M788 215 L1000 300 M809 215 L1170 300 M829 215 L1340 300 M850 215 L1510 300 M870 215 L1680 300 M890 215 L1850 300 M911 215 L2020 300 M931 215 L2190 300 M952 215 L2360 300"/><path d="M0 226 L1000 226 M0 244 L1000 244 M0 270 L1000 270" class="faint"/></svg><div class="farm" aria-hidden="true"><svg viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M50 30 L14 62 M50 30 L44 70 M50 30 L62 76 M50 30 L84 58" vector-effect="non-scaling-stroke"/></svg><span class="ai">AI</span></div><canvas id="net" aria-hidden="true"></canvas><div class="wrap">
+<header id="top"><svg class="farm" aria-hidden="true" viewBox="0 0 240 240">
+  <circle class="rim" cx="120" cy="120" r="112"/>
+  <g class="shape"><image href="cow.png" x="34" y="42.2" width="92" height="79.8"/><image href="pig.png" x="44" y="149.3" width="46" height="36.7"/><image href="chick.png" x="98" y="164.7" width="15" height="21.3"/></g>
+  <path d="M68 52 a16 16 0 0 1 24 0 M61 45 a26 26 0 0 1 38 0 M54 38 a36 36 0 0 1 52 0"/>
+  <circle class="dot" cx="80" cy="58" r="2.2"/>
+  <rect x="150" y="52" width="48" height="82" rx="7"/>
+  <path d="M168 126 h12"/>
+  <text x="174" y="97">AI</text>
+  <path d="M112 186 q13 -9 26 0 t26 0 t26 0 t18 -3 M112 200 h96 M112 186 v14 M208 183 v17"/>
+  <path d="M138 181 V155 M138 173 q-9 -2 -10 -11 q9 0 10 11 M138 173 q9 -2 10 -11 q-9 0 -10 11 M138 161 q-5 -6 0 -13 q5 7 0 13 M164 181 V155 M164 173 q-9 -2 -10 -11 q9 0 10 11 M164 173 q9 -2 10 -11 q-9 0 -10 11 M164 161 q-5 -6 0 -13 q5 7 0 13 M190 181 V155 M190 173 q-9 -2 -10 -11 q9 0 10 11 M190 173 q9 -2 10 -11 q-9 0 -10 11 M190 161 q-5 -6 0 -13 q5 7 0 13"/>
+  <path class="link" d="M128 96 L148 92 M174 136 L168 152"/>
+</svg><canvas id="net" aria-hidden="true"></canvas><div class="wrap">
   <img src="saba-noor.jpg" alt="Saba Noor">
   <div>
     <h1>Saba Noor</h1>
