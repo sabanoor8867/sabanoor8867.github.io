@@ -71,9 +71,9 @@ footer{padding:30px 0 36px 0;color:var(--soft);font-size:0.86em;border-top:1px s
 
 .wrap{max-width:1240px}
 .layout{display:grid;grid-template-columns:minmax(0,1fr) 240px;gap:44px;align-items:start}
-aside{order:2;position:sticky;top:64px;margin-top:38px;padding:18px 20px;background:var(--pale);border-radius:8px;border-top:3px solid var(--mid);font-size:0.9em;color:#2c3845}
+aside{order:2;position:sticky;top:64px;margin-top:38px;padding:20px 22px;background:#ffffff;border:1px solid var(--line);border-radius:8px;border-top:3px solid var(--navy);font-size:0.9em;color:#2c3845}
 aside h4{margin:0 0 8px 0;color:var(--navy);font-size:0.8em;text-transform:uppercase;letter-spacing:0.08em}
-aside h4:not(:first-child){margin-top:18px}
+aside h4:not(:first-child){margin-top:18px;padding-top:16px;border-top:1px solid var(--line)}
 aside p{margin:0 0 12px 0}
 aside span{display:block;font-weight:600;color:var(--navy)}
 aside a{word-break:break-word}
@@ -95,7 +95,9 @@ nav a.active{color:var(--navy);box-shadow:inset 0 -2px 0 var(--mid)}
 .card:hover{transform:translateY(-5px);box-shadow:0 3px 6px rgba(15,47,82,0.06),0 14px 30px rgba(15,47,82,0.14);border-color:#b9cfe5}
 .skills div{transition:transform .2s,box-shadow .2s}
 .skills div:hover{transform:translateY(-3px);box-shadow:0 8px 18px rgba(15,47,82,0.10)}
-aside{box-shadow:0 2px 6px rgba(15,47,82,0.05),0 10px 24px rgba(15,47,82,0.07)}
+aside{box-shadow:0 1px 3px rgba(15,47,82,0.06),0 8px 22px rgba(15,47,82,0.08)}
+aside a{text-decoration:none;font-weight:600}
+aside a:hover{text-decoration:underline}
 .item{transition:background .15s}
 .item:hover{background:#f7fafd}
 .js .reveal{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease}
@@ -374,7 +376,7 @@ Publications: <a href="https://biblio.ugent.be/person/c6546091-6692-11ed-b2b4-e3
   var still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   // sections and cards fade in when they come into view
-  var items = document.querySelectorAll("section h2, .card, .item, ol.pubs li, .skills div, #about p, aside");
+  var items = document.querySelectorAll("section h2, .card, .item, ol.pubs li, .skills div, #about p");
   if ("IntersectionObserver" in window && !still) {
     var seen = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
