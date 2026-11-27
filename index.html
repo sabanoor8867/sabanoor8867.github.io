@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+<script>document.documentElement.className = "js";</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Saba Noor | PhD researcher, Ghent University (UGent)</title>
@@ -80,6 +81,30 @@ aside ul{list-style:none;margin:0;padding:0}
 aside li{padding:3px 0}
 @media (max-width:900px){.layout{grid-template-columns:1fr;gap:0}aside{order:0;position:static;margin-top:24px}}
 @media print{aside{position:static}}
+
+header{position:relative;overflow:hidden}
+header canvas{position:absolute;inset:0;width:100%;height:100%;opacity:0.55;pointer-events:none}
+header .wrap{position:relative;z-index:1}
+header img{box-shadow:0 0 0 6px rgba(255,255,255,0.14),0 14px 34px rgba(0,0,0,0.35)}
+nav{transition:box-shadow .2s}
+nav.scrolled{box-shadow:0 4px 18px rgba(15,47,82,0.12)}
+nav a.active{color:var(--navy);box-shadow:inset 0 -2px 0 var(--mid)}
+.btn{transition:transform .15s,background .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 6px 14px rgba(0,0,0,0.22)}
+.card{box-shadow:0 1px 2px rgba(15,47,82,0.05),0 2px 6px rgba(15,47,82,0.04);transition:transform .2s,box-shadow .2s,border-color .2s}
+.card:hover{transform:translateY(-5px);box-shadow:0 3px 6px rgba(15,47,82,0.06),0 14px 30px rgba(15,47,82,0.14);border-color:#b9cfe5}
+.skills div{transition:transform .2s,box-shadow .2s}
+.skills div:hover{transform:translateY(-3px);box-shadow:0 8px 18px rgba(15,47,82,0.10)}
+aside{box-shadow:0 2px 6px rgba(15,47,82,0.05),0 10px 24px rgba(15,47,82,0.07)}
+.item{transition:background .15s}
+.item:hover{background:#f7fafd}
+.js .reveal{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease}
+.js .reveal.in{opacity:1;transform:none}
+#top-link{position:fixed;right:22px;bottom:22px;width:42px;height:42px;border-radius:50%;background:var(--navy);color:#fff;text-decoration:none;display:flex;align-items:center;justify-content:center;font-size:1.1em;box-shadow:0 6px 16px rgba(15,47,82,0.3);opacity:0;pointer-events:none;transition:opacity .2s,transform .2s}
+#top-link.show{opacity:1;pointer-events:auto}
+#top-link:hover{transform:translateY(-3px);color:#fff}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.js .reveal{opacity:1;transform:none;transition:none}.card,.btn,.skills div,#top-link{transition:none}.card:hover,.btn:hover,.skills div:hover{transform:none}}
+@media print{header canvas,#top-link{display:none}.js .reveal{opacity:1;transform:none}}
 </style>
 <script type="application/ld+json">
 {
@@ -111,7 +136,7 @@ aside li{padding:3px 0}
   <a href="#contact">Contact</a>
 </div></nav>
 
-<header id="top"><div class="wrap">
+<header id="top"><canvas id="net" aria-hidden="true"></canvas><div class="wrap">
   <img src="saba-noor.jpg" alt="Saba Noor">
   <div>
     <h1>Saba Noor</h1>
@@ -341,6 +366,80 @@ Publications: <a href="https://biblio.ugent.be/person/c6546091-6692-11ed-b2b4-e3
 <footer>Saba Noor, Ghent, Belgium. Last updated November 2026.</footer>
 </div>
 </div></main>
+
+<a id="top-link" href="#top" aria-label="Back to top">&uarr;</a>
+
+<script>
+(function () {
+  var still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // sections and cards fade in when they come into view
+  var items = document.querySelectorAll("section h2, .card, .item, ol.pubs li, .skills div, #about p, aside");
+  if ("IntersectionObserver" in window && !still) {
+    var seen = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) { entry.target.classList.add("in"); seen.unobserve(entry.target); }
+      });
+    }, { threshold: 0.08 });
+    items.forEach(function (el) { el.classList.add("reveal"); seen.observe(el); });
+  }
+
+  // menu: shadow after scrolling, and the current section marked
+  var nav = document.querySelector("nav");
+  var links = Array.prototype.slice.call(nav.querySelectorAll('a[href^="#"]:not(.name)'));
+  var targets = links.map(function (a) { return document.querySelector(a.getAttribute("href")); });
+  var topLink = document.getElementById("top-link");
+  function onScroll() {
+    var y = window.scrollY;
+    nav.classList.toggle("scrolled", y > 10);
+    topLink.classList.toggle("show", y > 600);
+    var current = -1;
+    targets.forEach(function (s, i) { if (s && s.getBoundingClientRect().top < 140) { current = i; } });
+    links.forEach(function (a, i) { a.classList.toggle("active", i === current); });
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  // header background: a slowly moving graph of nodes and links
+  var canvas = document.getElementById("net");
+  var ctx = canvas.getContext("2d");
+  var nodes = [], w = 0, h = 0, ratio = Math.min(window.devicePixelRatio || 1, 2);
+  function size() {
+    w = canvas.clientWidth; h = canvas.clientHeight;
+    canvas.width = w * ratio; canvas.height = h * ratio;
+    ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+    var count = Math.max(18, Math.min(60, Math.round(w * h / 9000)));
+    nodes = [];
+    for (var i = 0; i < count; i++) {
+      nodes.push({ x: Math.random() * w, y: Math.random() * h, dx: (Math.random() - 0.5) * 0.25,
+                   dy: (Math.random() - 0.5) * 0.25, r: 1.2 + Math.random() * 1.8 });
+    }
+  }
+  function draw() {
+    ctx.clearRect(0, 0, w, h);
+    for (var i = 0; i < nodes.length; i++) {
+      var a = nodes[i];
+      a.x += a.dx; a.y += a.dy;
+      if (a.x < 0 || a.x > w) { a.dx = -a.dx; }
+      if (a.y < 0 || a.y > h) { a.dy = -a.dy; }
+      for (var j = i + 1; j < nodes.length; j++) {
+        var b = nodes[j], d = Math.hypot(a.x - b.x, a.y - b.y);
+        if (d < 150) {
+          ctx.strokeStyle = "rgba(255,255,255," + (0.22 * (1 - d / 150)).toFixed(3) + ")";
+          ctx.lineWidth = 1;
+          ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+        }
+      }
+      ctx.fillStyle = "rgba(255,255,255,0.55)";
+      ctx.beginPath(); ctx.arc(a.x, a.y, a.r, 0, 6.2832); ctx.fill();
+    }
+    if (!still) { window.requestAnimationFrame(draw); }
+  }
+  size();
+  draw();
+  window.addEventListener("resize", function () { size(); if (still) { draw(); } });
+})();
+</script>
 
 </body>
 </html>
